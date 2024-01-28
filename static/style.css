@@ -1,0 +1,696 @@
+/*  ---------------------------------------------------------------------------------------------------
+    Index:
+    * Document-wide/ setup
+    * Footer
+    * Layout
+        * Header
+    * Menu/ Navbar
+    * Home Page
+        * Templating
+        * Home page 1 (Landing page)
+        * Home page 2 (Woman pill)
+        * Home page 3 (Graph)
+        * Home Page 4 (Gear)
+    * Team
+    ---------------------------------------------------------------------------------------------------  */
+
+/*  ---------------------------------------------------------------------------------------------------
+    Document-wide/ Setup
+    ---------------------------------------------------------------------------------------------------  */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,400;1,100;1,400&display=swap');
+
+html * {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+:root {
+    --yalebackground: linear-gradient(-45deg, #000000, #00356B, #aab6c1);
+    --graypages: #354350;
+}
+
+.left-aligned { margin-left: auto; }
+.ital {font-style: italic;}
+.bg-dark { background-color: #000000 !important; }
+#landing-cont, .bg-hero {background: var(--yalebackground);}
+
+/* Background animation */
+  @keyframes backgroundShift {
+    0% {background-position: 0% 50%;
+    }
+    50% {background-position: 100% 50%;
+    }
+    100% {background-position: 0% 50%;
+    }
+  }
+
+.top-logo {
+    height: 4vh;
+    width: auto;
+    transition: opacity 0.5s; /* 0.5s fade transition for opacity */
+}
+
+.hidden {
+    opacity: 0; /* makes the element fully transparent */
+}
+/* What is this for again? */
+@keyframes animate {
+
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+
+    100%{
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+}
+
+/* CALLOUT */
+.bd-callout { padding:1.25rem; margin-top:1.25rem; margin-bottom:1.25rem; border:1px solid #e9ecef; border-left-width:.25rem; border-radius:.25rem }
+.bd-callout h4 { margin-bottom:.25rem }
+.bd-callout p:last-child { margin-bottom:0 }
+.bd-callout code { border-radius:.25rem }
+.bd-callout+.bd-callout { margin-top:-.25rem }
+.bd-callout-info { border-left-color:#5bc0de }
+.bd-callout-warning { border-left-color:#f0ad4e }
+.bd-callout-danger { border-left-color:#d9534f }
+
+/*  ---------------------------------------------------------------------------------------------------
+    Footer
+    ---------------------------------------------------------------------------------------------------  */
+footer a { color: white; font-weight: bold; text-decoration: none; }
+footer a:hover { color: white; text-decoration: underline; }
+
+.new-footer {
+    width: 100vw;
+    height: auto;
+    background-color: black;
+
+    display: flex;
+    flex-direction: column;
+
+    color: white !important;
+}
+
+.footer-container {
+    margin-top: 5vh;
+    width: 40vw;
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+/*  ---------------------------------------------------------------------------------------------------
+    Layout
+    ---------------------------------------------------------------------------------------------------  */
+    
+    /*Header*/
+    .header {
+        width: 100%;
+        height: 35vh;
+        position: relative;
+    
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .header-svg {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        z-index: 0;
+    }
+    
+    .header-title-container {
+        position: absolute;
+        top: 10vh;
+        z-index:1;
+    }
+/*  ---------------------------------------------------------------------------------------------------
+    Menu/ Navbar
+    ---------------------------------------------------------------------------------------------------  */
+.navbar {
+    top: 0;
+    left: 0;
+    margin-left: 0;
+    width: 100%;
+    padding-top: 35px;
+    padding-bottom: 30px;
+    background-color: transparent;
+    transition: background-color 200ms linear;
+}
+.navbar-fixed-top.scrolled {
+  background-color: #000000 !important;
+  transition: background-color 200ms linear;
+}
+
+/* .navbar-toggler {
+    border: none;
+    position: relative;
+    background-color: rgb(176, 178, 185);
+    left: -5vw;
+} */
+
+.navbar-toggler {
+    border: none;
+    position: relative;
+    background-color: transparent;  /* Make the button's background transparent */
+    left: -5vw;
+    overflow: hidden;  /* Make sure the blur doesn't leak outside the button */
+    z-index: 1;  /* Ensure the button is above the blurred background */
+    transition: background-color 200ms linear;
+}
+
+.navbar-toggler.scrolled {
+    background-color: rgb(50, 50, 50);  /* Change to whatever color you want after scrolling */
+    transition: background-color 200ms linear;
+
+}
+
+/* .navbar-toggler::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(176, 178, 185, 0.5);  /* Semi-transparent gray color */
+    backdrop-filter: blur(10px);  /* Blur the background behind the button */
+    z-index: -1;  /* Position the blurred background behind the button */
+} */
+
+.navbar-toggler-icon {
+    z-index: 100;
+}
+
+.collapse-cont {
+    width: 13vw;
+    background-color: #000000;
+    border-radius: 2vw;
+    position: relative;
+    float: right;
+    z-index: 2;
+}
+
+.collapse {
+    text-align: left;
+}
+
+.navbar-collapse {
+    text-align: center;
+}
+
+.dropdown-menu {
+    text-align: center;
+    background-color: transparent;
+    border: none;
+}
+
+.dropdown-item-1 {
+    color: rgb(183, 179, 179);
+    text-decoration: none;
+}
+
+.dropdown-item-1:hover {
+    color: white;
+}
+
+/*  ---------------------------------------------------------------------------------------------------
+    Home Page Templating
+    ---------------------------------------------------------------------------------------------------  */
+
+.break {
+        height: 0vh;
+        width: 100vw;
+    }
+
+.scroll-story {
+    display: flex;
+    flex-direction: column;
+}
+
+.ss-page {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    width: 100vw;
+    height: 100vh;
+}
+
+.ss-text {
+    margin-top: 10vh;
+    margin-left: 20vw;
+    width: 50vw;
+    height: auto;
+    font-size: 3.5vh;
+    color: white;
+  }
+
+  .ss-header {
+    width: 60vw;
+    font-size: 4vh;
+    margin-bottom: 2vh;
+    color: white;
+}
+
+.ss-body {
+    margin-top: 1vh;
+    width: 40vw;
+    font-size: 2.5vh;
+}
+
+.ss-graphic {
+    width: 20vw;
+    height: 0;
+    position: relative;
+}
+/*  ---------------------------------------------------------------------------------------------------
+    Home Page 1 (Landing)
+    * ldg : landing (as in landing page)
+    * Animation inspired by Manuel Pinto: https://codepen.io/P1N2O/pen/pyBNzX
+    ---------------------------------------------------------------------------------------------------  */
+.marg-5 {
+    margin-left: 5vw;
+}
+
+.home-name {
+    width: 30vw;
+    height: auto;
+}
+
+#landing-cont {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 135vh;
+    justify-content: center;
+    background-size: 130% 130%;
+    animation: backgroundShift 10s ease infinite;
+    position: relative;
+}
+
+.ldg-content-cont {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+  }
+
+  .home-1-1-1 {
+    margin-left: 15vw;
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #home-1-1-1-1 {
+    width: 25vw;
+    height: auto;
+    margin-left: 5vw;
+}
+
+#equolity-bio-image {
+    max-width: 100%;
+    max-height: 100%;
+    margin-left: -5vw;
+}
+
+#engineering-images {
+    max-width: 100%;
+    max-height: 100%;
+    justify-self: center;
+    margin-left: 15vw;
+}
+
+
+
+  .home-main-text {
+        color: rgb(177, 177, 177);
+        font-style: italic;
+        text-align: left;
+        font-size: 2vw;
+        margin-top: -4.5vh;
+        margin-left: 1vw;
+}
+
+.h-p1 {
+    margin-top: 1vh;
+    color: white;
+    font-style: normal;
+    font-size: 2.5vh;
+    width: 30vw;
+}
+
+.home-image-container {
+    margin-left: 6vw;
+    margin-top: 10vh;
+    width: 35vw; /* Set the width of the container */
+    height: 35vw; /* Set the height of the container */
+    overflow: hidden; /* Hide overflow if the scaled image exceeds container dimensions */
+}
+
+.home-image-container img {
+    display: block; /* Make the image a block element */
+    width: 100%; /* Set the image width to fill the container */
+    height: auto; /* Automatically adjust the image height while maintaining aspect ratio */
+}
+
+/*  ---------------------------------------------------------------------------------------------------
+    Home Page 2 (Woman with pill)
+    ---------------------------------------------------------------------------------------------------  */
+
+.ss-page-1 {
+    background-color:var(--graypages);
+    height: 90vh;
+}
+
+.ss-1-graphic {
+    left: 65vw;
+    top: -37vh;
+}
+
+/*float animation pill*/
+.float { 
+    animation-name: float;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+ 
+@keyframes float {
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 3px); }
+    100%   { transform: translate(0, -0px); }   
+}
+
+
+/*  ---------------------------------------------------------------------------------------------------
+    Home Page 3 (Graph)
+    ---------------------------------------------------------------------------------------------------  */
+.model {
+    width: 20vw;
+    height: auto;
+    border-radius: 4vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#graph-container {
+    width: 50vw;
+    height: 55vh;
+    align-self: center;
+}
+
+ /* SS Page 2 */
+ .ss-page-2 {
+    background-color:#4675a0;
+    color: white;
+    height: auto;
+}
+
+.ss-h-2 {
+    margin-top: 15vh;
+    font-size: 8vh;
+}
+
+.ss-2-1 {
+    width: 60vw;
+    margin-bottom: 10vh;
+}
+
+/*  ---------------------------------------------------------------------------------------------------
+    Home Page 4 (Gear)
+    ---------------------------------------------------------------------------------------------------  */
+ /* SS Page 3 */
+ .ss-page-3 {
+    height: auto;
+    background-color: var(--graypages);
+}
+
+ .ss-3-graphic {
+    align-self: center;
+    width: 20vw;
+    height: 0;
+
+    top: -37vh;
+    left: 21vw;
+}
+
+.button-3 {
+    width: 100vw;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 10vh;
+    margin-bottom: 15vh;
+}
+
+.ss-h-3 {
+    margin-bottom: 1vh;
+    margin-top: 0;
+    font-size: 3.5vh;
+}
+.ss-3-1 {
+    margin-top: 1vh;
+}
+
+@keyframes rotateAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.rotate-group {
+    animation: rotateAnimation 90s linear infinite;
+    transform-origin: 50% 50%;
+    display: inline-block;
+
+}
+
+.bottom-scroll {
+    width: 70vw;
+    margin-top: 15vh;
+}
+
+.explore-button {
+    width: 15vw;
+    height: 7vh;
+    border-radius: 4vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vh;
+    font-style: bold;
+
+    border: none;
+    background-color: #8cabc8;
+}
+
+.explore-button:hover { color: black; text-decoration: underline; }
+
+/*  ---------------------------------------------------------------------------------------------------
+    Team
+    ---------------------------------------------------------------------------------------------------  */
+
+.description-container {
+    width:100%;
+    height: auto;
+    display: flex;
+
+    margin-bottom: 10vh;
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+}
+
+.team-description {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin-right: 5vw;
+    margin-left: -5vw;
+}
+
+.team-cycle-svg {
+    width: 25vw;
+    height: 25vw;
+}
+.conveyor-svg {
+    width: 20vw;
+    height: 20vw;
+
+    display: flex;
+    vertical-align: center;
+}
+
+.team-container {
+    margin-top: -5vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.name-card {
+    margin-top: 8vh;
+    border: solid .3vw #aab6c1;
+    border-radius: 2vw;
+    width: 40vw;
+    min-height: 40vh;
+    height: auto + 5vh;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background: linear-gradient(-45deg, #a8a9ac, #466b91, #aab6c1);
+    animation: backgroundShift 20s ease infinite;
+    background-size: 300%;
+    
+}
+
+.mentor-card {
+    margin-top: 4vh;
+    min-height: 10vh;
+    width: 32vw;
+    height: auto;
+
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.photo-circle {
+    margin-top: 2vh;
+    width: 25vh;
+    height: 25vh;
+    border-radius: 50%;
+    background-color: #aab6c1;
+
+    position: relative;
+    right: -.5vw;
+    overflow: hidden;
+
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team-imgs {
+  width: 70%;
+  height: auto;
+  display: block;
+
+}
+
+.profile-pic {
+    border-radius: 50%;
+    width: 140%;
+    height: auto;
+    position: relative;
+    top: 5vh;
+}
+
+.witt {
+    top: -2vh;
+    left: 1vw;
+    width: 175%;
+    height: auto;
+}
+
+.luis {
+    top: 5vh;
+    left: 1vw;
+    width: 175%;
+    height: auto;
+}
+
+.will {
+    width: 150%;
+    height: auto;
+}
+
+.lior {
+    width: 180%;
+    height: auto;
+    top: 6vh;
+    left: -.5vw;
+}
+
+.team-header {
+    text-align: center;
+    font-size: 6vh;
+    width: 80vw;
+    margin-top: 5vh;
+}
+
+.card-info {
+    width: 50%;
+    min-height: 80%;
+    height: auto;
+    border: solid .3vw #aab6c1;
+    border-radius: 2vw;
+    
+    display: flex;
+    flex-direction: column;
+    padding: 1vw;
+    background-color: white;
+}
+
+.card-name {
+    font-style: bold;
+    font-size: 1.5rem;
+}
+
+.card-yr-team {
+    margin-top: -.6vh;
+    font-style: italic;
+}
+
+.card-break {
+    margin-top: .5vh;
+    width: 15vw;
+}
+
+.card-bio {
+    margin-top: -0.5vh;
+}
+
+#graph-container {
+    margin-bottom: 20px;  /* Adds margin at the bottom */
+}
+
+#results-images {
+    max-width: 100%;  /* This ensures the image never exceeds the width of its container */
+    height: auto;  /* This maintains the image's aspect ratio */
+}
+
+#cont-pdf {
+    width: 80vw;
+    height: 100vh;
+}
+
+/* random lol */
+.end-block {
+    width: 100vw;
+    height: 5vh;
+}

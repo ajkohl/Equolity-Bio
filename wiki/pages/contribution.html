@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+  
+{% block title %}Contribution{% endblock %}
+{% block lead %}Make a useful contribution for future iGEM teams. Use this page to document that contribution.{% endblock %}
+
+{% block page_content %}
+
+<div class="col-lg-8">
+  <h2>Discoveries</h2>
+  <hr>
+  <p>The vast majority of the current literature on similar biosynthetic pathways involved E. coli BL21-DE3 rather than the DH10β strain that we used. Most literature also constructed plasmid-based expression systems, which involve the T7 promoter and isopropyl ß-D-1-thiogalactopyranoside (IPTG) inducer. With E. coli DH10β, we genomically integrated the pathway with an induction system using anhydrotetracycline (aTc) and theophylline monohydrate. Instead of IPTG-induced T7, we chose weaker yeast promoters, as per known cross-kingdom expression levels. Bioproduction of this different system was then assessed using a liquid chromatography-mass spectrometry (LC-MS) method, developed by our team to quantify both equol and daidzein production, which differed from the traditional high-performance liquid chromatography (HPLC) used in current literature. We successfully demonstrated recombinant expression of both the daidzein and equol biosynthetic pathways using a different strain, a different induction system, and a different quantification method, proving their methodological viability in these experiments. To the best of our knowledge, this was the first successful demonstration of genomic integration of the daidzein and equol biosynthetic pathways in E. coli.</p>
+  
+  <p>We also selected the best homologs for daidzein bioproduction through rational selection after thorough literature review. We codon-optimized these genes and characterized them (view our parts pages!). To the best of our knowledge, a combination of these homologs will produce sufficient quantities of daidzein when recombinantly expressed.</p>
+  
+  <p>Throughout our research process, we frequently encountered a lack of comprehensive detail amongst the methodologies published. It appeared that much of the literature assumed readers had a high level of background, especially regarding known challenges in the field. For example, a known challenge is the poor solubility of polyphenol compounds, yet exact concentrations and compositions about master stocks of these compounds are often omitted. In terms of solubilizing certain substrates, including lyophilized daidzein or p-coumaric acid, much of the literature failed to provide information on how effective dissolution was achieved. There was also little discussion on the impact of solvents used in the literature on cell viability in liquid culture. Another insufficiently discussed matter is the endogenously low levels of malonyl-coenzyme A (malonyl-CoA) that is a critical substrate in many polyphenol biosynthetic pathways, including the one for daidzein. This information is crucial for researchers conducting related experiments, as was discovered in our experience.</p>
+  
+  <h2>Challenges, Troubleshooting, and Solutions</h2>
+  <hr>
+
+  <p>To address the challenge of substrate solubility, we employed a common solvent, dimethyl-sulfoxide (DMSO) to solubilize them. We then investigated the effect of DMSO on cell viability by performing an assay to correlate DMSO co-solvent concentration to cell viability in culture. We determined that cell viability seemed to decrease at concentrations of DMSO higher than ~1%.</p>
+  
+  <p>To address the malonyl-CoA limitations of prokaryotes, we employed the use of cerulenin, a bacteriostatic antibiotic, that halts the pathway that consumes malonyl-CoA. This was used for preliminary experiments.</p>
+  
+  <p>Problems with performing Golden-Gate assemblies were consistently encountered due to the presence of a methylation site, dcm, overlapping with the BsaI restriction enzyme cut site. We addressed this in two manners: first by performing Golden-Gate assembly using amplicons of the gene inserts rather than with full expression vector plasmids; second, by assembling the genes  by modifying the amplicons for use in Gibson assembly. For the Golden-Gate-assembled plasmids, if only one or two inserts were missing, a higher concentration of those inserts was used in a subsequent attempt.</p>
+  
+  <p>The cytochrome P450 enzymes, expressed in the latter half of the daidzein biosynthetic pathway, localize to the membrane. As prokaryotes lack much of the internal membranes that eukaryotes have, cytochrome P450 enzymes expressed in prokaryotes have lower levels of membrane localization. The mechanism by which they localize involve a hydrophobic peptide signal. In prokaryotes, the presence of this hydrophobic region, when the enzyme is not localized, reduces the solubility of the protein, affecting cell activity. As such, protein engineering on cytochrome P450s must be performed in order to achieve successful enzymatic activity of cytochrome P450s in prokaryotic systems. We rationally selected a series of modifications, detailed in the next steps section of our results page, that include a flexible protein linker, specific N-terminus truncations, and addition of new peptide signals. To the best of our knowledge, these modifications will vastly improve cytochrome P450 enzymatic activity in E. coli.</p>
+  
+  <p>A challenge in using LC-MS was resolving the difference between intermediates liquiritigenin and isoliquiritigenin, which are isomers. To solve this problem, we ran our LC-MS protocol with a longer elution time, enabling the differentiation of the two substances. Although LC-MS/MS was not employed, we suspect that this may have also been a sufficient solution.</p>
+  
+  <p>The enzymes involved in the first reactions of the pathway, expressed in the first half of the daidzein biosynthetic pathway, require malonyl-CoA. Aside from the solution we employed, alternate solutions that are more sustainable and long-term involve recombinant expression of the malonate shuttling and malonate-to-malonyl-CoA genes found in many organisms or the systematic genetic engineering of the carbon flux of the cell to optimize endogenous malonyl-CoA concentrations.
+  
+    <p>We encountered inconsistencies in and between diagnostic colony PCR screens. We employed three tactics to solve this issue: first, we repeated PCR screens, changing single variables at a time; second, we modified our design to shorten the product length to increase the probability of successful amplification; third, we sent PCR reaction mixes for next-generation sequencing for a more comprehensive diagnostic picture. With these steps, we achieved successful diagnostic colony PCR screens.</p>
+    
+    <p>In only a few cases, we had difficulty amplifying certain products for downstream application. As we suspected PCR reaction conditions to be the cause of the issue, we ran gradient PCRs, varying in annealing temperature. After these diagnostics, we were able to optimize for successful amplification.</p>
+    
+    <p>In only a few cases, we had difficulty amplifying a single product for downstream application. Rather than modifying PCR reaction conditions, we opted for gel extraction to isolate the single product. In this, we were successful.</p>
+    
+    <p>In isolating plasmid DNA, we encountered many problems with quality and yield. After experimentation, we empirically discovered the problem to be a poor-quality reagent. For future reference, it is important to refresh reagent stocks, ensure ethanol is added to the appropriate reagent and not degraded, and ensure RNAse is added to the appropriate reagent and is stored properly.</p>
+    
+    <p>In organic extractions, many of our experiments failed due to improper procedure. We found the following to help with successful extraction: ensure an emulsion has not formed (to remove, wait a long time or centrifuge the mixture); use compatible materials (ensure containers, tubes, tips, filters, and other materials are DMSO-safe and do not degrade with the specific organic solvent being used, and also check for organic solvent miscibility); ensure product purity by doing pre-extraction wash step. This pre-extraction wash step is specific to LC-MS detection, as it is often more sensitive and requires higher purity compared to HPLC. Our protocol for this pre-extraction wash step can be found on our experiments tab.</p>
+    
+    <p>We also encountered issues with cell growth on selective agar plates, indicating problems with electroporation. To resolve these issues, we employed the following strategies: use of fresh electrocompetent cells, increase of the recovery time, increase of the incubation time, increase of the amount of DNA added. In a few of our electroporation attempts, we encountered arcing, due to insufficient purification of added DNA. To circumvent this problem, we often doubled the amount of DNA mixture undergoing drop dialysis for purification in order to have a backup purified DNA stock to immediately electroporate again with new cells in the event of arcing.</p>
+
+    <p>Find below a brief overview of the literature we reviewed as a part of our decision-making process.</p>
+
+    <iframe id="cont-pdf" src="https://static.igem.wiki/teams/4947/wiki/lit-review-on-extraction-malonyl-coa-p-coumaric-acid-dzn-optimization-daidzein-optimizations.pdf">Find above a brief overview of the literature we reviewed as a part of our decision-making process.</iframe>
+    <br><br>
+    
+    <h2>iGEM Parts Submission Summary</h2>
+    <hr>
+
+    <p>We submitted our extensive contributions to the parts registry, comprising 45 parts (ranging from BBa_K4947000 to BBa_K4947044). </p>
+    
+    <h3>Silver Medal and Special Prize Composite Part Application</h3>
+    <p>Our team is presenting a composite part for the Silver medal, which is A111 or <a href="https://parts.igem.org/Part:BBa_K4947034" target="_blank">BBa_K4947034</a> in the registry.</p>
+
+    <br>
+</div>
+
+<!-- <div class="row mt-4">
+  <div class="col">
+    <div class="bd-callout bd-callout-info">
+      <h4>Bronze Medal Criterion #4</h4>
+      <p>Make a useful contribution for future iGEM teams. Use this page to document that contribution.<p>
+      <p>If you are making a contribution by adding information to an existing Part or creating a new Part, you must document your contribution on the Part's Main Page on the <a href="http://parts.igem.org/Main_Page">Registry</a> for your team to be eligible for this criteria. You can use this page to link to that part and include additional information about your contribution.</p>
+      <hr>
+      <p>Please see the <a href="https://competition.igem.org/judging/medals">2023 Medals Page</a> for more information.</p>
+    </div>
+  </div>
+</div> -->
+
+{% endblock %}

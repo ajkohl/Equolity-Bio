@@ -1,0 +1,4 @@
+frozen-flask==0.15
+pandas
+plotly
+numpy

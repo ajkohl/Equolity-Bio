@@ -1,0 +1,262 @@
+{% extends "layout.html" %}
+{% block title %}Modeling{% endblock %}
+
+{% block page_content %}
+
+{{ feedback }}
+
+<div class="description-container">
+    <div class="team-description">
+      <h3>Machine Learning to study HRT Access</h3>
+      <p>This page uses neural networks trained on the SWAN dataset to provide predictions on Hormone Replacement Therapy (HRT) accessibility for menopausal women based on various socioeconomic and health factors. By inputting details such as race, menopause status, age, income, and frequency of hot flashes, one can receive personalized predictions on their likelihood of accessing different HRT treatments. </p>
+
+    </div>
+    <div class="team-cycle-svg">
+      <img src="https://static.igem.wiki/teams/4947/wiki/network.svg" alt="SVG Image">
+    </div>
+  </div>
+
+<div class="row mt-4">
+  <div class="col-lg-8">
+    <!-- <h2>Machine Learning to study HRT Access</h2>
+    <br>
+    <p>This page uses neural networks trained on the SWAN dataset to provide predictions on Hormone Replacement Therapy (HRT) accessibility for menopausal women based on various socioeconomic and health factors. By inputting details such as race, menopause status, age, income, and frequency of hot flashes, one can receive personalized predictions on their likelihood of accessing different HRT treatments. </p>
+    <hr> -->
+    <h3>Enter details to see HRT accessibility prediction:</h3>
+    <hr>
+
+    <form id="predictForm" onsubmit="event.preventDefault(); predict();">
+        Race: 
+        <select name="Race">
+            <option value="Japanese/Japanese American">Japanese/Japanese American</option>
+            <option value="Black/African American">Black/African American</option>
+            <option value="Caucasian/ White Non-Hispanic">Caucasian/ White Non-Hispanic</option>
+            <option value="Chinese/Chinese American">Chinese/Chinese American</option>
+        </select>
+        <br><br>
+        
+        Menopause Status: 
+        <select name="MenoStatus">
+            <option value="Early Peri">Early Peri</option>
+            <option value="Late Peri">Late Peri</option>
+            <option value="Natural Post">Natural Post</option>
+            <option value="Post by BSO">Post by BSO</option>
+            <option value="Unknown due to hysterectomy">Unknown due to hysterectomy</option>
+            <option value="Unknown due to HT use">Unknown due to HT use</option>
+            <option value="Pre">Pre menopause</option>
+        </select>
+        <br><br>
+        
+        Age: 
+        <select name="Age">
+            {% for age in range(45, 71) %}
+                <option value="{{ age }}">{{ age }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        
+        Language: 
+        <select name="Language">
+            <option value="English">English</option>
+            <option value="Cantonese">Cantonese</option>
+            <option value="Japanese">Japanese</option>
+        </select>
+        <br><br>
+        
+        Insurance: 
+        <select type="number" name="data.INSURAN10">
+            <option value="-1">No insurance</option>
+            <option value="0">Poor insurance</option>
+            <option value="1">Good insurance</option>
+        </select>
+        <br><br>
+        Affordibility: 
+        <select type="number" name="data.NOTAFFR10">
+            <option value="-1">Rather not say</option>
+            <option value="0">Cannot afford medication</option>
+            <option value="1">Can afford medication</option>
+        </select>
+        <br><br>
+        Income: 
+        <select type="number" name="data.INCOME10">
+            <option value="0">Poverty Line</option>
+            <option value="1">Working Class</option>
+            <option value="3">Middle / Upper Middle Class</option>
+            <option value="4">Upper Class</option>
+        </select>
+        <br><br>
+        Hot Flashes per 2 weeks: 
+        <select type="number" name="data.HOTFLAS10">
+            <option value="0">none but other symptoms</option>
+            <option value="1">1-5 days</option>
+            <option value="3">6-8 days</option>
+            <option value="4">9-13 days</option>
+            <option value="5">Every Day</option>
+        </select>
+        <br><br>
+            
+        <input type="submit" value="Predict">
+    </form>
+    <div id="modelUrl1" data-url="https://2023.igem.wiki/yale/Estr110_model_tfjs/model.json"></div>
+    <div id="modelUrl2" data-url="https://2023.igem.wiki/yale/EstrInjec110_model_tfjs/model.json"></div>
+    <div id="modelUrl3" data-url="https://2023.igem.wiki/yale/EstrProgComb110_model_tfjs/model.json"></div>
+    <div id="modelUrl4" data-url="https://2023.igem.wiki/yale/OtherHormone1_model_tfjs/model.json"></div>
+    <script>
+
+        let models = {};
+    
+        async function loadModels() {
+            for (let target of ['Estr110', 'EstrInjec110', 'EstrProgComb110', 'OtherHormone1']) {
+                models[target] = await tf.loadLayersModel('https://2023.igem.wiki/yale/'+ target + '_model_tfjs/model.json');
+            }
+            console.log("Models loaded!");
+        }
+        function standardScale(value, meanValue, stdDevValue) {
+        return (value - meanValue) / stdDevValue;
+    }
+        function encodeRace(race) {
+            return {
+                "Japanese/Japanese American": [1, 0, 0, 0],
+                "Black/African American": [0, 1, 0, 0],
+                "Caucasian/ White Non-Hispanic": [0, 0, 1, 0],
+                "Chinese/Chinese American": [0, 0, 0, 1]
+            }[race];
+        }
+    
+        function encodeMenoStatus(status) {
+            return {
+                "Early Peri": [1, 0, 0, 0, 0, 0, 0],
+                "Late Peri": [0, 1, 0, 0, 0, 0, 0],
+                "Natural Post": [0, 0, 1, 0, 0, 0, 0],
+                "Post by BSO": [0, 0, 0, 1, 0, 0, 0],
+                "Unknown due to hysterectomy": [0, 0, 0, 0, 1, 0, 0],
+                "Unknown due to HT use": [0, 0, 0, 0, 0, 1, 0],
+                "Pre": [0, 0, 0, 0, 0, 0, 1]
+            }[status];
+        }
+    
+        function encodeLanguage(language) {
+            return {
+                "English": [1, 0, 0],
+                "Cantonese": [0, 1, 0],
+                "Japanese": [0, 0, 1]
+            }[language];
+        }
+    
+        function preprocessData(formData) {
+        let raceEncoded = encodeRace(formData.Race);
+        let menoStatusEncoded = encodeMenoStatus(formData.MenoStatus);
+        let languageEncoded = encodeLanguage(formData.Language);
+    
+        // Replace with the actual mean and stdDev values from your training data
+        let ageScaled = standardScale(formData.Age, 65, 4);
+        let insuran10Scaled = standardScale(formData.INSURAN10, 0, 0.5);
+        let notaffr10Scaled = standardScale(formData.NOTAFFR10, 0, 0.5);
+        let income10Scaled = standardScale(formData.INCOME10, 2, 1);
+        let hotflas10Scaled = standardScale(formData.HOTFLAS10, 2, 2);
+    
+        return [
+            ...raceEncoded,
+            ...menoStatusEncoded,
+            ...languageEncoded,
+            ageScaled, 
+            insuran10Scaled, 
+            notaffr10Scaled,
+            income10Scaled,
+            hotflas10Scaled
+        ];
+    }
+    
+    
+        function predict() {
+            const formData = {
+                Race: document.querySelector('select[name="Race"]').value,
+                MenoStatus: document.querySelector('select[name="MenoStatus"]').value,
+                Age: parseFloat(document.querySelector('select[name="Age"]').value), // Parse as float
+                Language: document.querySelector('select[name="Language"]').value,
+                INSURAN10: parseFloat(document.querySelector('select[name="data.INSURAN10"]').value),
+                NOTAFFR10: parseFloat(document.querySelector('select[name="data.NOTAFFR10"]').value),
+                INCOME10: parseFloat(document.querySelector('select[name="data.INCOME10"]').value),
+                HOTFLAS10: parseFloat(document.querySelector('select[name="data.HOTFLAS10"]').value)
+            };
+    
+    
+            const preprocessedData = preprocessData(formData);
+    
+            // Placeholder for predictions, this is where you will store the predictions
+            const predictions = {};
+    
+            const tensorData = tf.tensor2d([preprocessedData]); // Convert array to 2D tensor
+    
+            for (let target in models) {
+                const modelOutput = models[target].predict(tensorData);
+                predictions[target] = modelOutput.dataSync()[0].toFixed(4); // Extract data from tensor and format it
+            }
+    
+            displayPredictions(predictions);
+        }
+    
+        function displayPredictions(predictions) {
+            for (let target in predictions) {
+                // Convert the float to a percentage for user-friendliness
+                const predictionPercentage = (predictions[target] * 100).toFixed(2);
+                document.getElementById(target + "_prediction").innerText = `${predictionPercentage}% likelihood of access to ` + target + ' treatment';
+        }
+    }
+    
+    
+        // Load models on page load
+        loadModels();
+    
+    </script>
+    <p</p></p>
+    <h2>Therapy Access Likelihood Predictions:</h2>
+    <br>
+    <h5>Outputs:</h5>
+    <p id="Estr110_prediction">Estrogen 110</p>
+    <p id="EstrInjec110_prediction">Estrogen Injection 110</p>
+    <p id="EstrProgComb110_prediction">Estrogen Progesterone Combination 110</p>
+    <p id="OtherHormone1_prediction">Other Hormone Treatment</p>
+    <br>
+    <h5>Key:</h5>
+    <p>Estr110 represents Estrogen pills (such as Premarin, Estrace, Ogen, etc).</p>
+    <p>EstrInjec110 is Estrogen treatment by injection or patch (such as Estraderm).</p>
+    <p>EstrProgComb110 is Combination estrogen/progestin treatment (such as Premphase or Prempro).</p>
+    <p>OtherHormone1 represents miscelleneous other menopause treatments.</p>
+  <hr>
+  <h2>Flux Balance Analysis</h2>
+  <br>
+  <p>In addition to the prior model, our dry lab team also implemented a computational project utilizing flux balance analysis to explore the metabolic model of our recombinant E. Coli to optimize for the production of Daidzein and Equol by running knockout analyses to channel flux towards our target pathway.</p>
+  <br>
+  <p>We encourage you to explore the github repository, download the code and play around with our FBA.py script on your own models! The repository can be found here: </p>
+  <a href="https://github.com/ajkohl/FBA-igem2023/blob/main/FBA.py">FBA Github Repo</a>
+  <br>
+  <br>
+  <p>This was a research project focused on optimizing the biosynthetic pathway from p-coumaric acid to daidzein. The endeavor utilized Flux Balance Analysis (FBA) models and CobraPy solver, illustrating the journey from initial obstacles through adaptive problem-solving, to significant discoveries that informed subsequent work.</p>
+  <br>  
+  <h3>Initial Hurdles and Strategic Shift</h3>
+  <p>The project's commencement was marked by a series of complexities while employing the traditional CobraPy solver. The occurrence of inconsistent values in knockout analysis and confounding results from identical analyses led to a decision to transition to the Gurobi solver. Through Linux terminal commands, the Gurobi solver was integrated into the existing setup, significantly improving the stability and consistency of the analysis results based on control tests.</p>
+  <br>
+  
+  <h3>Flux Variability Analysis and Model Verification</h3>
+    
+  <p>The extensive time and computing power requirements of a full genome knockout analysis led to the application of flux variability analysis (FVA). This shift allowed the identification and concentration on relevant genes impacting the biosynthetic pathway. To ensure the credibility of this model and chosen method of analysis, sanity checks were performed. Key genes directly involved in the p-coumaric acid to daidzein pathway were knocked out, and the anticipated changes in flux for the targeted enzymes confirmed the model was working.</p>
+  <br>
+
+  <h3>Identifying Shortcomings and Changing Focus</h3>
+    
+    <p>Despite the improvements made, limitations surfaced while attempting gene knockout analyses on the adjusted model. The flux of target enzymes remained unaffected even when relevant genes were knocked out. This observation indicated potential inadequacies in the baseline model or perhaps a compensating multi-tiered system that prevented major changes form the loss of a single gene to the target pathway. Thus, since the only way forward that I could think of was dynamic FBA, wet lab experimentation of enzyme fluxes for critical data was deemed an unwise use of their limited time and the FBA project was put aside. The FBA and gene knockout analysis did however produce promising results when the target was set to other pathways within E Coli, indicating potential utilization as an IGEM software development.
+     The identified challenges motivated a pivot from the FBA tools towards enhancing the Wiki and developing predictive machine learning models to support IHP components of the project.</p>
+     <br>
+
+    </div>
+  <div class="col-lg-4">
+    <h2>References</h2>
+    <hr>
+    <p>We utilized the Study of Womens Health Across the Nation dataset to train this model. We wanted to utilize this model for the purposes of showcasing barriers to access and to contextualize the work of Yale iGEM in the landscape of difficult-to-access treatments.</p>
+    <p>Swan study data access - women’s health across the nation. SWAN. (2023, April 12). https://www.swanstudy.org/swan-research/data-access/ </p>
+  </div>
+</div>
+
+
+{% endblock %}

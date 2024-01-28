@@ -1,0 +1,34 @@
+image: python:3.6
+
+pages:
+  stage: build
+  script:
+  - pip install -v --no-cache-dir -r dependencies.txt
+  - FLASK_APP=app.py flask freeze
+  # For Estr110
+  - mkdir -p public/Estr110_model_tfjs
+  - cp static/Estr110_model_tfjs/model.json public/Estr110_model_tfjs/model.json
+  - cp static/Estr110_model_tfjs/group1-shard1of1.bin public/Estr110_model_tfjs/group1-shard1of1.bin
+
+
+  # For EstrInjec110
+  - mkdir -p public/EstrInjec110_model_tfjs
+  - cp static/EstrInjec110_model_tfjs/model.json public/EstrInjec110_model_tfjs/model.json
+  - cp static/EstrInjec110_model_tfjs/group1-shard1of1.bin public/EstrInjec110_model_tfjs/group1-shard1of1.bin
+
+  # For EstrProgComb110
+  - mkdir -p public/EstrProgComb110_model_tfjs
+  - cp static/EstrProgComb110_model_tfjs/model.json public/EstrProgComb110_model_tfjs/model.json
+  - cp static/EstrProgComb110_model_tfjs/group1-shard1of1.bin public/EstrProgComb110_model_tfjs/group1-shard1of1.bin
+
+  # For OtherHormone1
+  - mkdir -p public/OtherHormone1_model_tfjs
+  - cp static/OtherHormone1_model_tfjs/model.json public/OtherHormone1_model_tfjs/model.json
+  - cp static/OtherHormone1_model_tfjs/group1-shard1of1.bin public/OtherHormone1_model_tfjs/group1-shard1of1.bin
+
+
+  artifacts:
+    paths:
+    - public
+  only:
+  - main

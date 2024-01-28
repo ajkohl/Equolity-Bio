@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+  
+{% block title %}Description{% endblock %}
+
+{% block page_content %}
+
+<!-- <div class="row mt-4">
+  <div class="col-lg-8">
+    <h2>De Novo Biosynthesis of Daidzein in E. coli</h2>
+    <hr>
+    <ul>
+      <li>A clear and concise description of your project.</li>
+      <li>A detailed explanation of why your team chose to work on this particular project.</li>
+      <li>References and sources to document your research.</li>
+      <li>Use illustrations and other visual resources to explain your project.</li>
+    </ul>
+  </div>
+  <div class="col-lg-4">
+    <h2>Inspirations</h2>
+    <hr>
+    <ul>
+      <li><a href="https://2022.igem.wiki/dtu-denmark/description">2022 DTU-Denmark</a></li>
+      <li><a href="https://2019.igem.org/Team:ITESO_Guadalajara/Description">2019 ITESO Guadalajara</a></li>
+      <li><a href="https://2020.igem.org/Team:Technion-Israel/Description">2020 Technion Israel</a></li>
+      <li><a href="https://2020.igem.org/Team:Botchan_Lab_Tokyo/Description">2020 Botchan Lab Tokyo</a></li>
+      <li><a href="https://2020.igem.org/Team:St_Andrews/Description">2020 St Andrews</a></li>
+      <li><a href="https://2020.igem.org/Team:MIT/Description">2020 MIT</a></li>
+    </ul>
+  </div>
+</div> -->
+<div class="description-container">
+  <div class="team-description">
+    <h3>De Novo Biosynthesis of Daidzein in <span class="ital">E. coli</span></h3>
+    <hr>
+    <p>The gut microbiome is a complex community of microorganisms that play a substantial role in the everyday regulation of human health. Bacteria within the gut microbiome produce equol, a phytoestrogen largely derived from soy products. Equol’s health benefits range from anti-inflammatory and antioxidant properties, to mitigating estrogen-dependent disorders such as menopause, to preventing aging-associated disorders such as osteoporosis, cardiovascular disease, and cancer. However, equol is only produced in the microbiota of 25-50% of humans. Deficiencies in gut microbiota, often due to environmental factors, inhibit the successful production of equol. Last year, the Yale iGEM team sought to improve the production of equol in the gut, increasing access to this metabolite for more people. This year, the team will build on last year's project and focus on engineering E. coli to produce daidzein, the precursor of equol. Enabling microbial species like E. coli to produce daidzein from gluclose would not only alter the natural production of equol in the human body but could also pave the way for more affordable equol supplements (for menopause treatment or other conditions). Demonstrated feasibility of the engineered organisms has significant implications for the future of medicine. The technology can be utilized for future use in probiotic supplements, allowing anyone, regardless of their environment, to reap the benefits of equol.
+    </p>
+  </div>
+  <div class="conveyor-svg">
+    <img class="home-name" src="https://static.igem.wiki/teams/4947/wiki/notebook/safety-form-lab-photos/conveyor.svg" alt="SVG Image">
+  </div>
+</div>
+
+  <!--
+<div class="col-lg-4">
+    <h2>References</h2>
+    <hr>
+  </div>
+  -->
+</div>
+<div class="col-lg-8 marg-5">
+  <h2>Introduction to the Project</h2>
+  <hr>
+  <p>Menopause is a natural part of a woman’s life and commonly occurs around the age of 50 when a woman has gone 12 consecutive months without menstruation. Menopause marks a decline in reproductive hormones, specifically estrogen, and can lead to a variety of symptoms that hinder one’s quality of life, such as hot flashes, fatigue, and anxiety.1 The severity of such symptoms can vary among individuals but can be very burdensome and impact one’s personal, social, and work lives. Yet, there are limited safe, cost-efficient treatment options to alleviate menopausal symptoms. With these symptoms proving to be debilitating at times, further research must be done to provide better treatment options and improve the medical field of women’s health.
+  </p>
+  <p>One promising method of menopause symptom treatment is the phytoestrogen (S)-equol, a bacterial isoflavandiol metabolite naturally produced by human gut microbiota. Previous studies on the efficacy of (S)-equol for treatment of menopause symptoms suggest protection against breast cancer, low bone density, and hypertension.2, 3 However, only 25-50% of  humans naturally produce (S)-equol in their gut microbiomes, depending on the individual and their dietary habits.4 Additionally, the production of (S)-equol in the human gut is limited by its low productivity and yield in anaerobic conditions within the gut.5 To address the lack of in vivo production of (S)-equol, probiotic supplements can be used to introduce (S)-equol producing bacteria into the human gut microbiome
+  </p>
+  <p>Daidzein, an isoflavone derived from soy, is a precursor to (S)-equol. The availability of daidzein as a substrate for (S)-equol production is crucial for the efficient production of (S)-equol through aerobic bacteria. However, the limited bioavailability of daidzein in humans and its low persistence in the bloodstream hinders the production of (S)-equol.6 Thus, increasing the efficiency of the daidzein biosynthetic pathway could yield more daidzein as a precursor to (S)-equol and improve the efficiency of downstream (S)-equol production. By introducing the optimized biosynthetic pathway of daidzein into aerobic bacteria, the need to externally feed daidzein for (S)-equol synthesis in E. coli could be eliminated and help decrease the cost of (S)-equol production at a commercial scale.
+  </p>
+  <p>Previous studies in metabolic engineering have sought to improve the biosynthetic pathway of daidzein and other isoflavones. A study by Liu et al. (2019) established the de novo biosynthesis of daidzein in yeast by screening for diverse plant enzymes and further optimizing the pathway to improve the metabolic flux towards daidzein through gene amplification, protein fusion, and genetic manipulations to increase the presence of metabolic cofactors.7 However, there have not been studies to date that investigate the de novo biosynthesis of daidzein in E. coli. A similar approach to Liu et al. can therefore be adopted to optimize the biosynthetic pathway of daidzein in E. coli. 
+  </p>
+  <p>	In this study, the biosynthetic pathway of daidzein was constructed and optimized through the screening of gene homologs and was heterologously expressed in E. coli for the in vivo production of daidzein. The pathway of interest consists of seven genes responsible for converting p-Coumaric acid into daidzein. The seven genes include 4CL, CHS, CHR, CHI, CPR, IFS/HIS, and HID. A modular approach was adopted to construct the biosynthetic pathway of daidzein using the selected gene homologs, where the seven genes were divided into three separate modules. The constructed modular plasmids were transformed then integrated into E. coli (DH10B). In future work, a whole cell reaction can be observed by feeding each bacterial strain with its respective precursor. The modular plasmids will be assessed based on their production of its respective compound. The optimal combination of gene homologs for each module will be identified and further assembled through Gibson Assembly to construct the complete optimized biosynthetic pathway of daidzein. This study will help address the limited in vivo production of (S)-equol through the optimization of the biosynthetic pathway of daidzein, a precursor to (S)-equol. The heterologous expression of this optimized daidzein pathway in E. coli can increase the efficiency of the downstream (S)-equol pathway, which can further reduce the cost of (S)-equol production and help introduce a safe, cost-efficient probiotic supplement that alleviates the symptoms of menopause. 
+  </p>
+  <h3>References</h3>
+  <li>1.	Monteleone, P., Mascagni, G., Giannini, A., Genazzani, A.R., and Simoncini, T. (2018). Symptoms of menopause — global prevalence, physiology and implications. Nature Reviews Endocrinology 14, 199-215. 10.1038/nrendo.2017.180.
+  </li>
+  <li>2.	Shimada, Y., Yasuda, S., Takahashi, M., Hayashi, T., Miyazawa, N., Sato, I., Abiru, Y., Uchiyama, S., and Hishigaki, H. (2010). Cloning and expression of a novel NADP(H)-dependent daidzein reductase, an enzyme involved in the metabolism of daidzein, from equol-producing Lactococcus strain 20-92. Appl Environ Microbiol 76, 5892-5901. 10.1128/aem.01101-10.
+  </li>
+  <li>3.	Vázquez, L., Flórez, A.B., Rodríguez, J., and Mayo, B. (2021). Heterologous expression of equol biosynthesis genes from Adlercreutzia equolifaciens. FEMS Microbiology Letters 368. 10.1093/femsle/fnab082.
+  </li>
+  <li>4.	Mayo, B., Vázquez, L., and Flórez, A.B. (2019). Equol: A Bacterial Metabolite from The Daidzein Isoflavone and Its Presumed Beneficial Health Effects. Nutrients 11. 10.3390/nu11092231.
+  </li>
+  <li>5.	Lee, P.G., Kim, J., Kim, E.J., Jung, E., Pandey, B.P., and Kim, B.G. (2016). P212A Mutant of Dihydrodaidzein Reductase Enhances (S)-Equol Production and Enantioselectivity in a Recombinant Escherichia coli Whole-Cell Reaction System. Appl Environ Microbiol 82, 1992-2002. 10.1128/aem.03584-15.
+  </li>
+  <li>6.	Montalesi, E., Cipolletti, M., Cracco, P., Fiocchetti, M., and Marino, M. (2020). Divergent Effects of Daidzein and its Metabolites on Estrogen-Induced Survival of Breast Cancer Cells. Cancers (Basel) 12. 10.3390/cancers12010167.
+  </li>
+  <li>7.	Liu, Q., Liu, Y., Li, G., Savolainen, O., Chen, Y., and Nielsen, J. (2021). De novo biosynthesis of bioactive isoflavonoids by engineered yeast cell factories. Nat Commun 12, 6085. 10.1038/s41467-021-26361-1.
+  </li>
+  <br>
+</div>
+
+{% endblock %}

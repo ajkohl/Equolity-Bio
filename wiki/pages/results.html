@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+  
+{% block title %}Results{% endblock %}
+{% block lead %}You can describe the results of your project and your future plans here.{% endblock %}
+
+{% block page_content %}
+
+<div class="col-lg-8">
+  <!DOCTYPE html>
+<html>
+
+<body>
+    <br>
+
+    <br><h2>Overview of Entire Equol Project</h2>
+    <hr>
+
+    <h3>Assembly of Equol Biosynthetic Pathway (From Last Year)</h3>
+    <p>The four genes involved in the equol biosynthetic pathway were obtained from the NCBI database: daidzein reductase (DZNR), dihydrodaidzein racemase (DDRC), dihydrodaidzein reductase (DHDR), and tetrahydrodaidzein reductase (THDR).</p>
+
+<br><img id="results-images" src="https://static.igem.wiki/teams/4947/wiki/notebook/safety-form-lab-photos/screenshot-2023-10-12-at-1-43-53-am.png" alt="PNG Image">
+
+    <p>A complete plasmid containing all the necessary gene inserts for the expression of the equol biosynthetic pathway was designed using CAD-SGE on Benchling. These genetic elements were inserted into a DNA backbone referred to as pCargo containing ampicillin resistance and several regulatory elements (promoters such as tef and SP6 and terminators such as fd):</p>
+
+<br><img id="results-images" src="https://static.igem.wiki/teams/4947/wiki/notebook/safety-form-lab-photos/screenshot-2023-10-12-at-1-44-14-am.png" alt="PNG Image">
+
+    <p>The pathway constituted into the above pCargo backbone was derived from the equol biosynthetic pathway in Adlercreutzia equolifasciens, a bacterial species isolated from human feces known to natively express the equol pathway. Attempts to assemble analogous plasmids with the biosynthetic pathway derived from Slackia isoflavoniconvertens and Lactococcus garvieae were unsuccessful.
+	The process of assembling the pathway derived from A. equolifasciens involved ordering the four gene fragments from IDT and assembling them into entry vector plasmids via Gibson assembly. These entry vector plasmids were then sequence-verified using whole-plasmid sequencing (WPS) with nanopore technology for downstream applications. This process involved the creation of 12 entry vector plasmids, which were subsequently transformed via electroporation into a strain of E. coli with a ΔASD mutation (aspartate-semialdehyde dehydrogenase). The  ΔASD mutation created an obligate requirement for diaminopimelic acid (DAP auxotrophy) amongst the transformed E. coli strains, allowing for post-transformation counterselection. DAP is necessary for the biosynthesis of lysine and the construction of peptidoglycan.
+	Following the assembly and sequence-verification of the entry vector plasmids, the individual gene fragments were amplified by polymerase chain reaction (PCR) in order to assemble these amplicons into the final equol biosynthetic pathway with the backbone pCargo. Initially, these gene assemblies were performed using transformation-associated recombination (TAR) in yeast. TAR assembly involves using homologous recombination of gene “hooks” and linearization by an endonuclease. Following TAR assembly, PCR junction screens, in which primer amplify the junctions between adjacent gene inserts, were used to confirm the fidelity of the assemblies. Those clones that contained all the screened junctions were selected for sequencing by WPS.
+</p>
+
+<br><img id="results-images" src="https://static.igem.wiki/teams/4947/wiki/notebook/safety-form-lab-photos/screenshot-2023-10-12-at-1-44-24-am.png" alt="PNG Image">
+
+<p>Initially, none of the sequenced plasmids were entirely mutation-free, so further experiments were designed to troubleshoot these mutations. Several restriction digests were performed to obtain mutation-free fragments that could be joined to produce a mutation-free plasmid. Two plasmids were used to provide sequence-verified fragments of the gene inserts in the equol biosynthetic pathway, and one other plasmid was used to provide a sequence-verified pCargo backbone.</p>
+
+<br><img id="results-images" src="https://static.igem.wiki/teams/4947/wiki/notebook/safety-form-lab-photos/screenshot-2023-10-12-at-1-44-36-am.png" alt="PNG Image">
+
+<p>A landing pad genetic element was then integrated via bacterial conjugation into a strain of E. coli Nissle 1917 and via electroporation into various strains of Lactobacillus. However, the attempts to integrate the landing pad into Lactobacillus were unsuccessful. The landing pad consists of an antibiotic selectable marker, a T7 RNAP circuit, a pT7-GFP/nanoluc reporter, and phiC31 attP sites, and it is integrated into the recipient genomes by transposition (Himar). The landing pad is maintained on the R6K suicide origin of replication and then conjugated via the R6K oriT. In bacteria, the phiC31 integrase integrates the gene inserts into the landing pad at cognate attP sites. Essentially, the landing pad facilitates the integration and expression of genetic elements across diverse bacterial species and across kingdoms (e.g. yeast). Following the integration of the landing pad into the E. coli Nissle strains, clones were screened for landing pad inducibility based on GFP expression. Those clones with greater GFP expression were hypothesized to subsequently have greater expression of the equol biosynthetic pathway.</p>
+
+<br><img id="results-images" src="https://static.igem.wiki/teams/4947/wiki/notebook/safety-form-lab-photos/screenshot-2023-10-12-at-1-44-44-am.png" alt="PNG Image">
+
+<p>The genomic integration of the landing pad into E. coli Nissle was generally successful, with 7 clones selected for later integration of the equol pathway. The clones selected and their respective GFP expression are shown below:</p>
+
+<br><img id="results-images" src="https://static.igem.wiki/teams/4947/wiki/notebook/safety-form-lab-photos/screenshot-2023-10-12-at-1-44-52-am.png" alt="PNG Image">
+
+<p>The final plasmids assembled, containing the equol biosynthetic pathway and pCargo backbone were named FK5, AE6, AE7-1, AE7-2, AE11, and AE14. The initial sequencing data for these assembled plasmids was as follows:</p>
+
+<br><img id="results-images" src="https://static.igem.wiki/teams/4947/wiki/notebook/safety-form-lab-photos/screenshot-2023-10-12-at-1-45-07-am.png" alt="PNG Image">
+
+<p>Based on this data, AE7-1, AE7-2, FK5, and AE11 were further investigated the following year. This decision was made on the basis of minimizing non-synonymous mutations in the equol biosynthetic pathway gene inserts.</p>
+
+
+    <h3>Testing and Optimization of Equol Expression (This Year):</h3>
+    <p>	In order to ensure that any mutations in the KanR antibiotic selectable marker were nonfunctional amongst the assembled plasmids in terms of impacting kanamycin or carbenicillin resistance, strains containing the plasmids AE7-1, AE7-2, FK5, and AE11 were plated on kanamycin, carbenicillin, or LB. Additionally, EC100D pir cells containing the pCargo plasmid (Lucigen pir), with both kanR and carbR, were utilized as a positive control across all three conditions, and a Lucigen pir strain with no antibiotic resistance was used as a negative control for the Kan and Carb conditions. All the strains (except the negative control) grew on both Carb and Kan, and all the strains (including the negative control) grew on LB, confirming that any mutations in the kanR selectable marker were nonfunctional and could, therefore, be ignored for downstream experiments. These integrated plasmids were then transformed by electroporation into a DAP auxotrophic recipient strain of E. coli, BW19851.deltaASD. The resulting plasmids were then sequence-verified by WPS: </p>
+
+<br><img id="results-images" src="https://static.igem.wiki/teams/4947/wiki/notebook/safety-form-lab-photos/screenshot-2023-10-12-at-1-45-17-am.png" alt="PNG Image">
+
+<p>Based on these WPS sequencing results, AE7-1 was selected for downstream applications as it was the only plasmid without any nonsynonymous mutations in the equol pathway.The mutations in cen4, a yeast regulatory element, were ignored for our purposes of bacterial expression. An assay was subsequently performed on all the above strains in order to determine whether the mutation in the phiC31 integrase was functional and could impede the ability of the plasmid to integrate into the genomic landing pad. This integrase functional assay involved the conjugation of each of the donor plasmids (AE7-1, AE7-2, AE11, FK5, and a positive control strain known to integrate robustly) into the recipient plasmids (E. coli DH10b strain with the landing pad and a negative control without the landing pad). This conjugation was successful, resulting in colonies for each of the experimental conditions and confirming that the mutation in the phiC31 integrase was nonfunctional. Therefore, the plasmids could be further assessed for their ability to express equol.
+</p>
+<p>Equol expression by the recombinant strains was quantified using the analytical technique liquid-chromatography mass spectrometry (LS-MS). The specific machine used at the Yale West Campus Analytical Core was the Agilent LCMS 6120B with 1260 HPLC, which uses electrospray ionization (ESI) to nebulize the LC analyte into the chamber at the atmospheric pressure in the presence of a strong electrostatic field and heated drying gas. The electrostatic field causes the dissociation of the analyte molecules while the heated drying gas causes the solvent in the droplets to evaporate, in turn causing the charge concentration to decrease as the droplets shrink and the ions are desorbed into the gas phase. The ions then pass through a capillary screening orifice before entering the quadropole mass analyzer, which mathematically deconvolutes the data to determine the m/z (mass-to-charge) ratio. The quadropole mass analyzer consists of four parallel rods arranged in a square with the analyte ions directed through the center. Voltages applied by the rods generate electromagnetic fields that allow only ions of specific m/z ratios to pass through the filter at any given time. Scanning mode was used to assess a broader range of m/z ratios, and the LC-MS instrument used allowed for scanning in both positive and negative ion mode. A reverse phase Nova-Pak C18 column was used with a gradient consisting of solvent A (water/acetic acid, 98:2 v/v) and solvent B (water/acetonitrile/acetic acid, 78:20:2, v/v/v) at a flow rate of 1 mL/min from the beginning to 55 min, and 1.2 mL/min from this point to the end. The gradient profile was 0–55 min, 100–20 % A; 55–70 min, 20–10 % A; 70–80 min, 10–5 % A; 80–110 min, 100 % B. Detection was performed by scanning from 210 to 400 nm with an acquisition speed of 1 s. A volume of 5 uL was injected.
+</p>
+<p>	A calibration curve was produced for equol by preparing a range of equol samples of various concentrations in acetonitrile solvent via serial dilutions. This calibration curve would allow us to correlate peak intensity on the mass spectrogram to equol concentration in solution for downstream experiments. Equol was measured in positive scanning mode with a m/z ratio of 243.2 and an elution time of ~3.3 minutes.
+</p>
+
+<br><img id="results-images" src="https://static.igem.wiki/teams/4947/wiki/notebook/safety-form-lab-photos/screenshot-2023-10-12-at-1-45-27-am.png" alt="PNG Image">
+
+<p>A similar calibration curve for equol’s isoflavonoid precursor, daidzein, was also established using the same procedure of serial dilutions in acetonitrile. Daidzein was detected in negative scanning mode with an m/z ratio of 255.2 and an elution time of ~3.1 minutes.</p>
+
+<br><img id="results-images" src="https://static.igem.wiki/teams/4947/wiki/notebook/safety-form-lab-photos/screenshot-2023-10-12-at-1-45-42-am.png" alt="PNG Image">
+
+<p>	Having established a calibration curve for equol, feeding experiments involving the E. coli DH10b strains with the equol biosynthetic pathway (plasmid AE7-1) integrated into the landing pad were performed. Nutrient-rich brain-heart infusion media (BHI) was used to incubate the E. coli DH10b strains overnight at 37 ºC at 220 rpm in culture tubes. These were then backdiluted the next morning in larger flasks and incubated again at 37 ºC until reaching an OD600 in the range of 0.6-1.0. At this point the bacteria were fed solubilized daidzein at various concentrations (in triplicate samples). In order to solubilize the lyophilized daidzein, dimethyl sulfoxide (DMSO) was used. Immediately following the feeding, the bacteria were induced using 1 mM theophylline monohydrate and 50 ng/mL aTc (anhydrotetracycline), which elicit the expression of the integrated equol pathway. The induced samples were incubated overnight at 37 ºC and then centrifuged in order to pellet the cells. The supernatant was sterile filtered and then an organic extraction was performed using ethyl acetate. The organic phase was allowed to evaporate under an air stream overnight, and the remaining gel-like substance remaining was resuspended in acetonitrile in HPLC vials for LC-MS analysis. The results of the feeding experiment in E. coli DH10b testing various daidzein concentrations:
+</p>
+
+<br><img id="results-images" src="https://static.igem.wiki/teams/4947/wiki/notebook/safety-form-lab-photos/screenshot-2023-10-12-at-1-45-57-am.png" alt="PNG Image">
+
+<p>The samples were also assessed for residual daidzein concentration in order to understand the efficiency by which the cells converted daidzein into equol:
+</p>
+
+<br><img id="results-images" src="https://static.igem.wiki/teams/4947/wiki/notebook/safety-form-lab-photos/screenshot-2023-10-12-at-1-46-06-am.png" alt="PNG Image">
+
+<p>Following the success of this first experiment of equol biosynthesis, we investigated the ability of other bacterial strains to express this pathway through integration into the landing pad. We attempted to naturally transform the equol-producing (AE7-1) plasmid into B. subtilis using starvation media. However, our attempts initially failed as we did not observe any colonies of B. subtilis after plating on media. We also attempted to integrate the pathway into E. coli Nissle, E. coli BL21-DE3, and Pseudomonas putida. The following gel demonstrates via junction screening the successful integration of the pathway into P. putida and DH10b (already known positive control), but it fails to show integration for E. coli Nissle, meaning we will have to re-attempt this bacterial conjugation:
+</p>
+
+<br><img id="results-images" src="https://static.igem.wiki/teams/4947/wiki/notebook/safety-form-lab-photos/screenshot-2023-10-12-at-1-46-16-am.png" alt="PNG Image">
+
+
+<h3>Daidzein Assemblies:</h3>
+
+<p>	As outlined in the engineering section of our Wiki, the assembly of the daidzein biosynthetic pathway utilized a modularized approach, in which enzymatic steps with relatively stable pathway intermediates were assembled in parallel. The fidelity of these assembly reactions, involving numerous gene inserts, was not perfect, so several technical replicates of each assembly reaction were performed and diagnosed using gel electrophoresis. The following represent our assemblies of different modules via Golden-Gate assembly:
+</p>
+
+<br><img id="results-images" src="https://static.igem.wiki/teams/4947/wiki/notebook/safety-form-lab-photos/screenshot-2023-10-12-at-1-46-26-am.png" alt="PNG Image">
+
+<br><img id="results-images" src="https://static.igem.wiki/teams/4947/wiki/notebook/safety-form-lab-photos/screenshot-2023-10-12-at-1-46-35-am.png" alt="PNG Image">
+
+<p>The bands labeled with A (2.7 kb) contained the gene inserts encoding for the coumarate ligase, chalcone synthase, and chalcone reductase enzymes. The bands labeled B (1.8 kb) contained gene inserts encoding the chalcone isomerase enzyme. Finally, the bands labeled C (3.2 kb) contained gene inserts encoding the cytochrome p450 reductase, isoflavonoid synthase, and hydroxyisoflavone enzymes. sacB was a yeast promoter included as part of each of our assembly reactions to facilitate the expression system existing in the strains conjugated using the landing pad technology. The bands labeled sacB contained no gene inserts beyond this sacB promoter, serving as a negative control. The numbers following the letters A, B, and C represent the specific combinations of gene homologs (orthologs from different plant species) assembled for downstream testing of respective functionality in catalyzing daidzein production from p-coumaric acid.
+</p>
+
+<p>	In parallel with these Golden-Gate assemblies, Gibson assemblies were also attempted in order to achieve successful assemblies for those that failed via Golden-Gate:
+</p>
+
+<br><img id="results-images" src="https://static.igem.wiki/teams/4947/wiki/notebook/safety-form-lab-photos/screenshot-2023-10-12-at-1-46-50-am.png" alt="PNG Image">
+
+<p>The same organizational, labeling system was used for these Gibson assemblies as for the previously described Golden-Gate assemblies. Between the Gibson and Golden-Gate assemblies, successfully assembled plasmids were obtained for each possible combination of homologs for each module. We are now just beginning to conduct feeding experiments, analogous to those used to quantify equol production (described above), in order to quantify the production of each daidzein pathway intermediate and elucidate the optimal homolog combination for each module.
+</p>
+
+<h3>Future Directions Summary:
+</h3>
+
+<ul>
+    <li>Conduct feeding experiments for individual modules and select optimal homolog combinations for each</li>
+    <li>Construct full pathway by assembling the three modules into a single plasmid and test for daidzein production</li>
+    <li>Combine this strain containing the full pathway with the strain expressing the equol pathway to synthesize equol directly from p-coumaric acid</li>
+    <li>Begin construction of the p-coumaric acid pathway using plant homologs that convert aromatic amino acids into p-coumaric acid (expressed on a plasmid)</li>
+    <li>Improve endogenous malonyl-CoA by overexpressing the pathway (expressed on a plasmid)</li>
+    <li>Optimize malonyl-CoA and p-coumaric acid production (while balancing using genetic engineering techniques such as overexpression and gene knockouts) to get an endogenous equol-producing strain</li>
+    <li>Optimize daidzein and equol production by optimizing: pH, temperature, media, substrate concentration, time, sugar release, and additives</li>
+    <li>Saved for the end after constructing the other pathways since they affect the carbon flux (makes culture conditions optimizations less tractable)</li>
+    <li>Test in different strains, including ones that survive in the human gut microenvironment, like E. coli Nissle as a potential live therapeutic</li>
+    <li>Test batch feeding experiments and test extraction for production (as opposed to detection)</li>
+    <li>Further optimize cell viability</li>
+    <li>Optimize feeding experiments to cut cost, improve sustainability</li>
+    <li>Characterize mass equol production</li>
+</ul>
+
+  </body>
+
+</html>
+
+</div>
+
+{% endblock %}

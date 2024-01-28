@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+  
+{% block title %}Engineering{% endblock %}
+
+{% block page_content %}
+<div class="col-lg-8">
+  <!DOCTYPE html>
+<html>
+
+<body>
+    <br>
+
+    <br><h2>Iteration 1</h2>
+    <hr>
+
+    <h3>Design</h3>
+    <p>By reading through primary literature, we identified homologs of the seven genes responsible for the biosynthesis of daidzein from p-coumaric acid. The seven genes included 4CL, CHS, CHR, CHI, CPR, IFS/HIS, and HID (Fig. 1a, 1b). We hypothesized that using different combinations of the selected gene homologs could optimize de novo biosynthesis of daidzein, which has never been done before in the heterologous host E. coli. De novo daidzein production can help increase the efficiency of in vitro equol production by removing the need to externally feed daidzein during whole cell reactions for equol production.</p>
+
+    <p>We designed entry vectors for each of the gene homologs for use with Golden Gate Assembly (GGA). Each entry vector contained BsaI restriction sites followed by a 4 base pair (bp) overhang on both ends, a ribosome binding domain, a promoter, and the gene homolog. The overhangs were designed to allow for correct assembly via GGA, where the downstream overhang of a gene complements the upstream overhang of the next gene within the daidzein pathway.</p>
+
+    <p>We first attempted to assemble the entire nine-part assembly that consisted of one homolog for each of the seven genes, a pZ promoter to initiate transcription of the first gene, and the pCargo backbone to allow for future integration of the plasmid into the E. coli genome. All parts of the assembly were ligated using GGA via BsaI digestion.</p>
+
+    <h3>Build</h3>
+    <p>We assembled all of our pathways via GGA. We assembled eleven plasmids that had different combinations of homologs within the entire nine-part assembly. Following the GGA, we electroporated our assembly plasmids into TransforMax EC100D pir+ electrocompetent E. coli.</p>
+
+    <h3>Test</h3>
+    <p>We cultured the transformed cells on agar plates containing kanamycin and carbenicillin antibiotics (both resistance markers of which are present in the pCargo backbone) to select for successful transformations. Initially, the first round of cloning yielded no growth, so we repeated the cloning process with some modifications, such as plating on only carbenicillin agar plates, to account for human error. On the repeated attempt, growth was seen only on the cells plated on carbenicillin.</p>
+
+    <p>To further test for correct assemblies, we ran PCR screenings on bacterial colonies, as well as the GGA reaction product, for all plates that showed growth using primers that screen for junctions of the gene inserts. Agarose gel electrophoresis (AGE) was then used to image the results of the PCR (Fig. 2). However, none of the AGE results showed the expected amplicon band lengths, suggesting that the assemblies were not successful. For further information, we sent in a select few of the colonies for whole plasmid sequencing based on the AGE results to determine if the pCargo backbone had self-ligated.</p>
+
+    <h3>Learn</h3>
+    <p>The whole plasmid sequencing results for the assemblies that were sent showed that the pCargo backbone had self-ligated without any inserts. This explained the bacterial growth on carbenicillin. With no successful assemblies after multiple GGA attempts, it became evident that constructing the large nine-part assemblies was not a viable strategy to assemble the daidzein pathway.</p>
+    
+    <p>From these results, we switched our strategy to a complete modular approach, while still continuing with Golden Gate cloning. In order to decrease the size of our assemblies, we decided to assemble the modules without the genes outside of each module.</p>
+
+    <br><img id="engineering-images" src="https://static.igem.wiki/teams/4947/wiki/notebook/notebook/safety-form-lab-photos/figure-1a.png" alt="PNG Image">
+    
+    <br><img id="engineering-images" src="https://static.igem.wiki/teams/4947/wiki/notebook/notebook/safety-form-lab-photos/figure-1b.png" alt="PNG Image">
+
+    <p>Fig. 1. a:  Biosynthetic pathway of daidzein from the phytochemical precursor p-coumaric acid. There are seven genes of interest within the pathway. b) Table containing list of homologs selected for each of the seven genes involved in converting p-coumaric acid into daidzein.
+    </p>
+    <br><img id="engineering-images" src="https://static.igem.wiki/teams/4947/wiki/notebook/notebook/safety-form-lab-photos/figure-2.jpeg" alt="PNG Image">
+
+    <p>Fig. 2. PCR results of GGA product of a nine-part assembly containing the following homologs: At4CL, GmCHS7, GmCHR5, GmCHIB2, CrCPR, Ge2-HIS, and GmHID. Column 1 represents the junction screening of the first three homologs (At4CL, GmCHS7, GmCHR5) and the pZ promoter, with expected amplicon length of 5.3 kb. Column 2 represents the junction screening of the remaining four homologs, with an expected amplicon length of 5.7 kb. Column 3 represents the junction screening of all seven homologs and the pZ promoter, with expected amplicon length of less than 6 kb due to the large amplicon length. Column 4 represents the screening for a section of the pCargo backbone, with an expected amplicon length of 0.6 kb. 
+    </p>
+
+    <br><h2>Iteration 2</h2>
+    <hr>
+
+<h3>Design</h3>
+<p>Based on the results of our initial round of Golden Gate cloning, we adopted a modular assembly approach. We divided the seven genes into three separate modules and assembled the modules through GGA (Fig. 3). The modules were named with the following nomenclature: Module A assemblies have the first three genes (4CL, CHS, CHR), Module B assemblies have the fourth gene (CHI), and Module C assemblies have the last three genes (CPR, IFS/HIS, HID). All modular plasmids were constructed along with the pCargo backbone and pZ promoter (Fig. 4a).</p>
+
+<p>Unlike the original design which tested the complete daidzein production pathway in one plasmid, this modular approach allows for the production of daidzein biosynthesis pathway intermediates. Module A assemblies convert p-coumaric acid to isoliquiritigenin. Module B assemblies convert isoliquiritigenin to liquiritigenin. Module C assemblies convert liquiritigenin to daidzein. We hoped that shifting the focus on daidzein intermediates would provide insight on the specific interactions between different homologs and increase the likelihood of successful assemblies via Golden Gate cloning.</p>
+
+<h3>Build</h3>
+<p>In order to successfully assemble the modular plasmids through GGA, we needed to alter the 4 bp overhangs of each gene entry vector, as some genes now ligated to different parts of the assembly construct than in the original design (specifically, the first and last genes of every module now ligate to the pZ promoter and pCargo backbone, respectively). To save on time and costs, we decided to design primers that would correctly alter the overhangs, instead of ordering new entry vectors. We conducted PCR amplifications using the designed primers in order to get the altered amplicons of each homolog’s entry vector. Using the homolog amplicons and Twist backbone amplicons, we then ran Gibson Assembly in order to construct the new homolog entry vectors compatible with the modular assembly approach to create stable stocks of the modified genes. We ran GGA using all different combinations of homologs for each module, and we electroporated the plasmids into Transformax EC100D pir+ E. coli.</p>
+
+<h3>Test</h3>
+<p>We cultured the transformed cells on agar plates containing kanamycin to select for successful transformations. We observed no bacterial growth on the plates. However, to gain more insight on possible ligation issues during assembly, we ran diagnostic PCRs on the GGA reaction products of the modular plasmids. For the PCR, we used primers that screen for all gene inserts within each plasmid. We then ran AGE on the PCR products. Additionally, we ran diagnostic digests in order to test the functionality of our BsaI restriction enzyme.</p>
+
+<h3>Learn</h3>
+<p>The gel results from the PCR of the GGA products failed to result in the expected corresponding band lengths. Instead, the results showed consistent bands at around 1.8kb, while the expected length was 5 kb for module A, 1.5 kb for module B, and 6kb for module C (Fig. 4b). This band length suggests the self-ligation of the pCargo backbone without any of the gene inserts.</p>
+
+<p>The results of our diagnostic tests indicated complete digestion of the pCargo plasmid by the BsaI restriction enzyme. However, homolog entry vectors did not fully digest from BsaI. Upon further analyses of our gene homolog entry vectors, we discovered that there was a dcm methylation site overlapping the BsaI restriction site on the entry vectors that we ordered. This methylation site explained the partial BsaI digestion of the homolog entry vectors, as well as the previous failed GGA attempts.</p>
+
+<p>With this crucial information, we looked for an alternative cloning technique that would allow us to continue using the entry vectors we had, but without the use of restriction enzymes. Thus, we made the switch to Gibson Assembly (Iteration 3). As a backup, we also worked on GGA using amplicons of the entry vectors (Iteration 4).</p>
+
+
+    <br><img id="engineering-images" src="https://static.igem.wiki/teams/4947/wiki/notebook/notebook/safety-form-lab-photos/figure-3.png" alt="PNG Image">
+    <p>Fig. 3. Modular approach to constructing the daidzein pathway. All possible combinations of homologs for each module were assembled.
+    </p>
+
+    <br><img id="engineering-images" src="https://static.igem.wiki/teams/4947/wiki/notebook/notebook/safety-form-lab-photos/figure-4a.png" alt="PNG Image">
+    <p>Fig. 4. a: Junction screenings schematic for the PCR of GGA assembly plasmids showing expected amplicon lengths for successful assemblies. b) Gel electrophoresis results following PCR. All assemblies showed consistent bands at around 1.8kb, consistent with the positive control which results from screening the pCargo backbone itself.
+    </p>
+    <br><img id="engineering-images" src="https://static.igem.wiki/teams/4947/wiki/notebook/notebook/safety-form-lab-photos/figure-4b.jpeg" alt="PNG Image">
+
+    <br><h2>Iteration 3</h2>
+    <hr>
+
+    <h3>Design</h3>
+    <p>Based on the unexpected drawback of the methylation site overlapping our BsaI restriction site, we switched our cloning technique from Golden Gate Assembly to Gibson Assembly, which eliminated the need for BsaI digestion and allowed us to continue using our gene entry vectors. We continued with the modular assembly approach to increase chances of successful clones.</p>
+    
+    <p>However, prior to running Gibson Assemblies, we needed to create amplicons of each gene homolog that contain appropriate homologous regions that overlap with the upstream and downstream genes within the modular assembly constructs. In order to do so, we designed primers that contain an annealing region, as well as a ~20 bp overhang as the homologous region.</p>
+    
+    <h3>Build</h3>
+    <p>We conducted PCR amplifications to obtain the amplicons of each gene homolog with the appropriate homologous regions, as well as amplicons of the pCargo backbone and pZ promoter. We then DpnI digested and PCR purified the products. Using these amplicons, we ran Gibson Assemblies to construct every combination of homologs for each module. The Gibson Assembly plasmids were then electroporated into Transformax EC100D Pir+ E. coli.</p>
+    
+    <h3>Test</h3>
+    <p>We cultured the transformed cells on agar plates containing kanamycin and carbenicllin antibiotics to select for successful transformations. We observed growth on all of the plates and ran PCR screenings on several of the bacterial colonies for each modular plasmid. We screened for junctions of the gene inserts for each module, and colonies that yielded bands of the correct length from the junction screen AGE were sent for whole plasmid sequencing (Fig. 5).</p>
+    
+    <h3>Learn</h3>
+    <p>In order to obtain bacterial colonies with the correct sequences, several colonies had to be picked and tested. Additionally, we ran several colony PCR screenings with different primer pairs in order to obtain correct gel results. Colony PCR screening failures may have risen due to large amplicon bands of over 3kbp (affecting PCR success), but a simpler reason would be due to incorrectly assembled plasmids.</p>
+
+    <br><img id="engineering-images" src="https://static.igem.wiki/teams/4947/wiki/notebook/notebook/safety-form-lab-photos/figure-5.jpeg" alt="PNG Image">
+    <p>Fig. 5. Representative results of colony PCR screenings yielding expected results. Module A212 contains genes Gu4CL, GmCHS7, and GuCHR1 with an expected amplicon length of 2.8kb. Module B1 contains gene GmCHIB2 with an expected amplicon length of 2kb. 
+    </p>
+
+    <br><h2>Iteration 4</h2>
+    <hr>
+
+<h3>Design</h3>
+<p>In tandem with our Gibson Assembly approach to construct the modular plasmids, we strategized a method to bypass the dcm methylation site overlapping the BsaI restriction site in order to allow us to use Golden Gate Assembly. While it is not a conventional approach, we decided to run GGA using the amplicons of our entry vectors, instead of using the homolog entry vectors as a whole. By using the amplicons, the methylation is not preserved in the PCR and should allow for proper assemblies. For this approach, we continued with the modular approach to construct the plasmids.</p>
+
+<h3>Build</h3>
+<p>We designed primers that would amplify upstream of the BsaI restriction site for each homolog entry vector, but ensured that the dcm methylation site would not amplify as well. Additionally, we designed the primers to alter the 4 bp overhangs of the homolog entry vectors in order to facilitate the modular assembly of the daidzein pathway through GGA. Performing PCR amplifications enabled us to move forward with the GGA using the amplicons.</p>
+
+<h3>Test</h3>
+<p>We cultured the transformed cells on agar plates containing kanamycin to select for successful transformations. We observed growth on all of the plates and ran PCR screenings on several of the bacterial colonies for each modular plasmid. We screened for junctions of the gene inserts for each module, and colonies that yielded correct bands from the AGE were sent for whole plasmid sequencing (Fig. 6).</p>
+
+<h3>Learn</h3>
+<p>The amplicon-GGA approach yielded a handful of successful assemblies that were sequence verified.</p>
+
+
+    <br><img id="engineering-images" src="https://static.igem.wiki/teams/4947/wiki/notebook/notebook/safety-form-lab-photos/figure-6.jpeg" alt="PNG Image">
+
+    <p>Fig. 6. Representative results of colony PCR screenings of GGAs through amplicons of homolog entry vectors. Four colonies were picked and screened for each modular plasmid. Module A212 contains genes Gu4CL, GmCHS7, and GuCHR1 with an expected amplicon length of 2.7kb. Module B2 contains GuCHI1 with an expected amplicon length of 1.8kb. Module C111 contains genes CrCPR, GeIFS, and GmHID with an expected amplicon length of 3.2 kb.
+    </p>
+
+
+    <br>
+    <br>
+  </body>
+
+</html>
+
+</div>
+
+
+{% endblock %}

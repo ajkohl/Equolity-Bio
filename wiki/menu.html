@@ -1,0 +1,78 @@
+<nav class="navbar navbar-dark bg-transparent fixed-top navbar-fixed-top">
+  <div class="container">
+    <!---- TEAM NAME ---->
+    <a style="font-size: 35px;" href="{{ url_for('home') }}">
+      <img class="top-logo" src="https://static.igem.wiki/teams/4947/wiki/notebook/safety-form-lab-photos/logo.svg" alt="SVG Image">
+    </a>
+
+    <!---- SMALL SCREEN MENU ICON ---->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse-cont">
+        <ul class="navbar-nav navbar-dark ml-auto right-aligned">
+
+          <!---- HOME ---->
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+          </li>
+  
+          <!---- TEAM ---->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="{{ url_for('pages', page='team') }}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Team
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item-1" href="{{ url_for('pages', page='team') }}">Team</a></li>
+              <li><a class="dropdown-item-1" href="{{ url_for('pages', page='attributions') }}">Attributions</a></li>
+            </ul>
+          </li>
+  
+          <!---- PROJECT ---->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Project
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item-1" href="{{ url_for('pages', page='contribution') }}">Contribution</a></li>
+              <li><a class="dropdown-item-1" href="{{ url_for('pages', page='description') }}">Description</a></li>
+              <li><a class="dropdown-item-1" href="{{ url_for('pages', page='engineering') }}">Engineering</a></li>
+              <li><a class="dropdown-item-1" href="{{ url_for('pages', page='experiments') }}">Experiments</a></li>
+              <li><a class="dropdown-item-1" href="{{ url_for('pages', page='notebook') }}">Notebook</a></li>
+              <li><a class="dropdown-item-1" href="{{ url_for('pages', page='results') }}">Results</a></li>
+            </ul>
+          </li>
+  
+          <!---- SAFETY ---->
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('pages', page='safety') }}">Safety</a>
+          </li>
+  
+          <!---- HUMAN PRACTICES ---->
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('pages', page='human-practices') }}">Human Practices</a>
+          </li>
+  
+          <!---- MODELING ---->
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('pages', page='modeling') }}">Modeling</a>
+          </li>
+  
+          <!---- AWARDS ---->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Awards
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item-1" href="{{ url_for('pages', page='entrepreneurship') }}">Entrepreneurship</a></li>
+            </ul>
+          </li>
+        </ul>
+
+      </div>
+      </div>
+      </div>
+      
+</nav>
